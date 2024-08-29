@@ -1,0 +1,15 @@
+:root {
+  --bg-color: #E1E3E6;
+  --color-vue-green: #42b883;
+  --color-vue-blue: #35495e
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  color: var(--color-vue-blue);
+  transition: 0.25s;
+}
+

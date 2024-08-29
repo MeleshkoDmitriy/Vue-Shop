@@ -1,0 +1,1 @@
+export const api = 'https://66c5523f047b75cc.mokky.dev'
