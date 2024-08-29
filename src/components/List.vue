@@ -1,20 +1,10 @@
 <script setup>
-import { onMounted, ref } from "vue";
 import Product from "./Product.vue"
-import { api } from "../../api";
-import axios from "axios";
 
-const products = ref([]);
-
-onMounted(async() => {
-  try {
-    const { data } = await axios.get(`${api}/products`)
-    products.value = data;
-    console.log(products.value);
-  } catch (error) {
-    console.error(error);
-  }
+defineProps({
+  products: Array
 })
+
 </script>
 
 <template>

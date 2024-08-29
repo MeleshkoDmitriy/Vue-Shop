@@ -1,30 +1,98 @@
 <script setup>
-import Header from "../src/components/Header.vue"
-import List from "../src/components/List.vue"
-import Drawer from "../src/components/Drawer.vue"
+import Header from '../src/components/Header.vue'
+import List from '../src/components/List.vue'
+import Drawer from '../src/components/Drawer.vue'
+import { onMounted, ref, reactive, watch, provide } from 'vue'
+import axios from 'axios'
+import { api } from '../api'
+
+const products = ref([])
+
+const filters = reactive({
+  sortBy: 'title',
+  searchQuery: ''
+})
+
+const onSelectChange = (event) => {
+  filters.sortBy = event.target.value
+}
+
+const onInputSearchChange = (event) => {
+  filters.searchQuery = event.target.value
+}
+
+const fetchProducts = async () => {
+  try {
+    const params = {
+      sortBy: filters.sortBy
+    }
+
+    if (filters.searchQuery) {
+      params.title = `*${filters.searchQuery}*`
+    }
+
+    const { data } = await axios.get(`${api}/products`, {
+      params
+    })
+    products.value = data
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const onFavoriteToggle = async (productId) => {
+  try {
+    const toggledProduct = products.value.find((product) => product.id === productId)
+
+    toggledProduct.isFavorite = !toggledProduct.isFavorite
+
+    await axios.patch(`${api}/products/${productId}`, {
+      isFavorite: toggledProduct.isFavorite,
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const onAddedToggle = async (productId) => {
+  try {
+    const toggledProduct = products.value.find((product) => product.id === productId)
+
+    toggledProduct.isAdded = !toggledProduct.isAdded
+
+    await axios.patch(`${api}/products/${productId}`, {
+      isAdded: toggledProduct.isAdded,
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+provide('onFavoriteToggle', onFavoriteToggle)
+provide('onAddedToggle', onAddedToggle)
+onMounted(fetchProducts)
+watch(filters, fetchProducts)
 </script>
 
 <template>
   <!-- <Drawer /> -->
   <div class="wrapperApp">
     <div class="container">
-
       <Header />
 
       <div class="panel">
         <h2>All products</h2>
         <div class="filters">
-          <select>
-            <option value="name">Name</option>
-            <option value="cheap">Price (cheap)</option>
-            <option value="expensive">Price (expensive)</option>
+          <select @change="onSelectChange">
+            <option value="name">Alphabet</option>
+            <option value="price">Price (from cheap)</option>
+            <option value="-price">Price (from expensive)</option>
           </select>
-          <input type="text" placeholder="search...">
+          <input @input="onInputSearchChange" type="text" placeholder="search..." />
         </div>
       </div>
 
-      <List />
-
+      <List :products="products" />
     </div>
   </div>
 </template>

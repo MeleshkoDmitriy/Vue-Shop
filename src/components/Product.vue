@@ -1,5 +1,7 @@
 <script setup>
-defineProps({
+import { inject } from 'vue'
+
+const props = defineProps({
   id: Number,
   title: String,
   category: String,
@@ -9,6 +11,17 @@ defineProps({
   isFavorite: Boolean,
   isAdded: Boolean
 })
+
+const onFavoriteToggle = inject('onFavoriteToggle')
+const onAddedToggle = inject('onAddedToggle')
+
+const onFavoriteClick = () => {
+  onFavoriteToggle(props.id)
+}
+
+const onAddClick = () => {
+  onAddedToggle(props.id)
+}
 </script>
 
 <template>
@@ -18,10 +31,20 @@ defineProps({
     </div>
     <h3 class="title">{{ title }}</h3>
     <span class="category">{{ category }}</span>
-    <span class="price">Price: <b>{{price}} $</b></span>
+    <span class="price"
+      >Price: <b>{{ price }} $</b></span
+    >
     <div class="buttons">
-      <img :src="isFavorite ? '/public/like-2.svg' : '/public/like-1.svg'" alt="isFavorite" />
-      <img :src="isAdded ? '/public/checked.svg' : '/public/plus.svg'" alt="isCart" />
+      <img
+        @click="onFavoriteClick"
+        :src="isFavorite ? '/public/like-2.svg' : '/public/like-1.svg'"
+        alt="isFavorite"
+      />
+      <img
+        @click="onAddClick"
+        :src="isAdded ? '/public/checked.svg' : '/public/plus.svg'"
+        alt="isCart"
+      />
     </div>
   </div>
 </template>
