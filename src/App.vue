@@ -10,11 +10,16 @@ const products = ref([])
 
 const filters = reactive({
   sortBy: 'title',
+  category: '',
   searchQuery: ''
 })
 
 const onSelectChange = (event) => {
   filters.sortBy = event.target.value
+}
+
+const onCategorySelectChange = (event) => {
+  filters.category = event.target.value
 }
 
 const onInputSearchChange = (event) => {
@@ -24,7 +29,11 @@ const onInputSearchChange = (event) => {
 const fetchProducts = async () => {
   try {
     const params = {
-      sortBy: filters.sortBy
+      sortBy: filters.sortBy,
+    }
+
+    if (filters.category) {
+      params.category = filters.category
     }
 
     if (filters.searchQuery) {
@@ -84,9 +93,19 @@ watch(filters, fetchProducts)
         <h2>All products</h2>
         <div class="filters">
           <select @change="onSelectChange">
-            <option value="name">Alphabet</option>
+            <option value="title">from A to Z</option>
+            <option value="-title">from Z to A</option>
             <option value="price">Price (from cheap)</option>
             <option value="-price">Price (from expensive)</option>
+          </select>
+          <select @change="onCategorySelectChange">
+            <option value="">All categories</option>
+            <option value="cap">Caps</option>
+            <option value="jeans">Jeans</option>
+            <option value="sneakers">Sneakers</option>
+            <option value="tees">Tees</option>
+            <option value="hoodie">Hoodeis</option>
+            <option value="jacket">Jackets</option>
           </select>
           <input @input="onInputSearchChange" type="text" placeholder="search..." />
         </div>
