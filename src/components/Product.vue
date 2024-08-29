@@ -20,9 +20,8 @@ defineProps({
     <span class="category">{{ category }}</span>
     <span class="price">Price: <b>{{price}} $</b></span>
     <div class="buttons">
-      <img :src="isFavorite ? '../public/like-2.svg' : '../public/like-1.svg'" alt="isFavorite" />
-      <img :src="isAdded ? '../public/checked.svg' : '../public/plus.svg'" alt="isCart" />
-      <img src="/public/like-2.svg" alt="">
+      <img :src="isFavorite ? '/public/like-2.svg' : '/public/like-1.svg'" alt="isFavorite" />
+      <img :src="isAdded ? '/public/checked.svg' : '/public/plus.svg'" alt="isCart" />
     </div>
   </div>
 </template>
