@@ -1,7 +1,9 @@
 <script setup>
 import { inject } from 'vue'
 import CartProduct from '../components/CartProduct.vue'
+import { useProductsStore } from '@/store/store'
 
+const productsStore = useProductsStore()
 const { onDrawerToggle } = inject('togglers')
 </script>
 
@@ -13,9 +15,13 @@ const { onDrawerToggle } = inject('togglers')
     </div>
 
     <div class="products">
-      <CartProduct />
-      <CartProduct />
-      <CartProduct />
+      <CartProduct
+        v-for="cProd in productsStore.cartProducts"
+        v-bind:key="cProd.id"
+        :title="cProd.title"
+        :img="cProd.imgUrl"
+        :price="cProd.price"
+      />
     </div>
 
     <div class="result">
@@ -31,12 +37,10 @@ const { onDrawerToggle } = inject('togglers')
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 .title {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 20px;
   padding: 20px 0;
 }

@@ -2,6 +2,18 @@
   --bg-color: #E1E3E6;
   --color-vue-green: #42b883;
   --color-vue-blue: #35495e
+
+  --scrollbar-width: 17px;
+}
+
+html {
+  padding-right: var(--scrollbar-width);
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 * {
@@ -12,8 +24,8 @@
   color: var(--color-vue-blue);
   transition: 0.25s;
   font-family: "Montserrat", sans-serif;
+  scroll-behavior: smooth;
 }
-
 a {
   text-decoration: transparent;
 }

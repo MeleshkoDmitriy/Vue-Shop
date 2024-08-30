@@ -8,7 +8,7 @@ defineProps({
 
 <template>
   <div class="wrapper">
-    <img :src="img" alt="product image">
+    <img class="image" :src="img" alt="product image">
     <div class="body">
       <span>{{ title }}</span>
       <b>{{ price }} $</b>
@@ -27,12 +27,23 @@ defineProps({
   display: flex;
   align-items: center;
   gap: 20px;
-  padding-inline: 10px;
+  padding: 10px;
   transition: 0.25s;
 }
 .wrapper:hover > .remove {
   opacity: 1;
   visibility: visible;
+}
+.image {
+  width: 60px;
+  height: 80px;
+  object-fit: cover;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 .remove {
   cursor: pointer;

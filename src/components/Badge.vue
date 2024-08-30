@@ -12,12 +12,12 @@ defineProps({
 
 <style scoped>
 .wrapper {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   background-color: var(--color-vue-green);
   position: absolute;
-  top: -13px;
-  left: -12px;
+  top: -17px;
+  left: -15px;
   display: flex;
   justify-content: center;
   align-items: center;

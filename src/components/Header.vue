@@ -18,18 +18,24 @@ const productsStore = useProductsStore()
 
     <nav class="nav">
       <div @click="() => emit('onDrawerToggle')" class="navItem">
-        <Badge />
+        <Badge
+          v-if="productsStore.cartProductsPrice > 0"
+          :counter="productsStore.cartProductsLength"
+        />
         <img src="/public/cart.svg" alt="cart" />
-        <span :class="['price', { active: isDrawerOpen }]">123 $</span>
+        <span
+          v-if="productsStore.cartProductsPrice > 0"
+          :class="['price', { active: isDrawerOpen }]"
+          ><strong>{{ productsStore.cartProductsPrice }} $</strong></span
+        >
+        <span v-else :class="['price', { active: isDrawerOpen }]"></span>
       </div>
 
       <router-link to="/favorites">
         <div class="navItem">
-          <Badge :counter="productsStore.favoritesLength "/>
+          <Badge :counter="productsStore.favoritesLength" />
           <img src="/public/heart.svg" alt="heart" />
-          <span class="heart" active-class="active"
-            >Favorite</span
-          >
+          <span class="heart" active-class="active">Favorite</span>
         </div></router-link
       >
 

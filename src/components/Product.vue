@@ -19,7 +19,7 @@ const onFavoriteClick = () => {
 }
 
 const onAddClick = () => {
-  productsStore.onAddedToggle(props.id)
+  productsStore.onAddedToggle(props.id, props.isAdded)
 }
 </script>
 

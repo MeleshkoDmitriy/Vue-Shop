@@ -7,6 +7,9 @@ export const useProductsStore = defineStore("ProductStore", () => {
   const products = ref([])
   const favorites = ref([])
   const favoritesLength = computed(() => favorites.value.length)
+  const cartProducts = ref([])
+  const cartProductsLength = computed(() => cartProducts.value.length)
+  const cartProductsPrice = computed(() => cartProducts.value.reduce((acc, item) => acc + item.price, 0))
 
   const fetchProducts = async (filters) => {
     try {
@@ -32,6 +35,7 @@ export const useProductsStore = defineStore("ProductStore", () => {
       
       products.value = data
       favorites.value = data.filter((product) => product.isFavorite === true)
+      cartProducts.value = data.filter((product) => product.isAdded === true)
     } catch (error) {
       console.error(error)
     }
@@ -40,7 +44,7 @@ export const useProductsStore = defineStore("ProductStore", () => {
   const onFavoriteToggle = async (productId, isFav) => {
     try {
       const toggledProduct = products.value.find((product) => product.id === productId);
-      
+
       if (isFav) {
         favorites.value = favorites.value.filter((fav) => fav.id !== productId);
       } else {
@@ -57,9 +61,15 @@ export const useProductsStore = defineStore("ProductStore", () => {
     }
   };
   
-  const onAddedToggle = async (productId) => {
+  const onAddedToggle = async (productId, isAdd) => {
     try {
       const toggledProduct = products.value.find((product) => product.id === productId)
+
+      if (isAdd) {
+        cartProducts.value = cartProducts.value.filter((product) => product.id !== productId);
+      } else {
+        cartProducts.value.push(toggledProduct);
+      }
   
       toggledProduct.isAdded = !toggledProduct.isAdded
   
@@ -77,6 +87,9 @@ export const useProductsStore = defineStore("ProductStore", () => {
     onFavoriteToggle,
     onAddedToggle,
     favorites,
-    favoritesLength
+    favoritesLength,
+    cartProducts,
+    cartProductsLength,
+    cartProductsPrice
   }
 })
