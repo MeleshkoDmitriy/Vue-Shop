@@ -1,5 +1,5 @@
 <script setup>
-import { inject } from 'vue'
+import { useProductsStore } from '@/store/store';
 
 const props = defineProps({
   id: Number,
@@ -9,17 +9,17 @@ const props = defineProps({
   imgUrl: String,
   sex: String,
   isFavorite: Boolean,
-  isAdded: Boolean
+  isAdded: Boolean,
 })
 
-const {onFavoriteToggle, onAddedToggle} = inject('togglers')
+const productsStore = useProductsStore()
 
 const onFavoriteClick = () => {
-  onFavoriteToggle(props.id)
+  productsStore.onFavoriteToggle(props.id, props.isFavorite)
 }
 
 const onAddClick = () => {
-  onAddedToggle(props.id)
+  productsStore.onAddedToggle(props.id)
 }
 </script>
 

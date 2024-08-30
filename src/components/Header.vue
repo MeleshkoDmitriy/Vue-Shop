@@ -1,27 +1,44 @@
 <script setup>
-  const emit = defineEmits(['onDrawerToggle'])
+import { useProductsStore } from '@/store/store'
+import { inject } from 'vue'
+import Badge from './Badge.vue'
+
+const emit = defineEmits(['onDrawerToggle'])
+const isDrawerOpen = inject('drawer')
+
+const productsStore = useProductsStore()
 </script>
 
-<template >
+<template>
   <header class="header">
-    <div class="logo">
-      <img src="../assets/logo.svg" alt="logo">
-    </div>
+    <router-link to="/">
+      <div class="logo">
+        <img src="../assets/logo.svg" alt="logo" /></div
+    ></router-link>
+
     <nav class="nav">
       <div @click="() => emit('onDrawerToggle')" class="navItem">
-        <img src="/public/cart.svg" alt="cart">
-        <span class="price">123 $</span>
+        <Badge />
+        <img src="/public/cart.svg" alt="cart" />
+        <span :class="['price', { active: isDrawerOpen }]">123 $</span>
       </div>
+
+      <router-link to="/favorites">
+        <div class="navItem">
+          <Badge :counter="productsStore.favoritesLength "/>
+          <img src="/public/heart.svg" alt="heart" />
+          <span class="heart" active-class="active"
+            >Favorite</span
+          >
+        </div></router-link
+      >
+
       <div class="navItem">
-        <img src="/public/heart.svg" alt="heart">
-        <span class="heart">Favorite</span>
-      </div>
-      <div class="navItem">
-        <img src="/public/profile.svg" alt="profile">
+        <img src="/public/profile.svg" alt="profile" />
         <span class="profile">Profile</span>
       </div>
     </nav>
-  </header>  
+  </header>
 </template>
 
 <style scoped>
@@ -41,6 +58,9 @@
   align-items: center;
   gap: 20px;
 }
+.navItem {
+  position: relative;
+}
 .navItem:hover {
   cursor: pointer;
 }
@@ -53,5 +73,8 @@
   margin-left: 5px;
   position: relative;
   top: -4px;
+}
+.active {
+  color: var(--color-vue-green);
 }
 </style>

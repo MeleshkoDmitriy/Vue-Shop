@@ -11,5 +11,16 @@
   font-family: sans-serif;
   color: var(--color-vue-blue);
   transition: 0.25s;
+  font-family: "Montserrat", sans-serif;
 }
 
+a {
+  text-decoration: transparent;
+}
+a:visited {
+  color: initial;
+}
+.active-router-link{
+  text-decoration: underline;
+  text-decoration-color: var(--color-vue-green);
+}
