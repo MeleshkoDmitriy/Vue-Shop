@@ -3,8 +3,7 @@
 <template >
   <header class="header">
     <div class="logo">
-      <img src="/public/favicon.ico" alt="logo">
-      <span>ue shop</span>
+      <img src="../assets/logo.svg" alt="logo">
     </div>
     <nav class="nav">
       <div class="navItem">
@@ -33,13 +32,7 @@
   border-bottom: 2px solid var(--bg-color);
 }
 .logo img {
-  width: 20px;
-  position: relative;
-  top: 4px;
-  right: -4px;
-}
-.logo span {
-  color: var(--color-vue-green);
+  width: 50px;
 }
 .nav {
   display: flex;

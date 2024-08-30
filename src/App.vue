@@ -92,13 +92,13 @@ watch(filters, fetchProducts)
       <div class="panel">
         <h2>All products</h2>
         <div class="filters">
-          <select @change="onSelectChange">
+          <select class="inputs" @change="onSelectChange">
             <option value="title">from A to Z</option>
             <option value="-title">from Z to A</option>
             <option value="price">Price (from cheap)</option>
             <option value="-price">Price (from expensive)</option>
           </select>
-          <select @change="onCategorySelectChange">
+          <select class="inputs" @change="onCategorySelectChange">
             <option value="">All categories</option>
             <option value="cap">Caps</option>
             <option value="jeans">Jeans</option>
@@ -107,7 +107,10 @@ watch(filters, fetchProducts)
             <option value="hoodie">Hoodeis</option>
             <option value="jacket">Jackets</option>
           </select>
-          <input @input="onInputSearchChange" type="text" placeholder="search..." />
+          <input class="inputs" @input="onInputSearchChange" type="text" placeholder="Search..." />
+          <button class="reset" type="button">
+            Reset
+          </button>
         </div>
       </div>
 
@@ -140,5 +143,26 @@ watch(filters, fetchProducts)
 .filters {
   display: flex;
   gap: 10px;
+}
+.inputs,
+.reset {
+  width: 150px;
+  height: 30px;
+  border: 1px solid var(--color-vue-green);
+  border-radius: 3px;
+  outline: none;
+}
+.reset {
+  background-color: var(--color-vue-green);
+  color: #fff;
+  cursor: pointer;
+}
+.inputs:active,
+.inputs:hover,
+.inputs:focus {
+  border: 2px solid var(--color-vue-green);
+}
+input.inputs  {
+  padding-left: 5px;
 }
 </style>
