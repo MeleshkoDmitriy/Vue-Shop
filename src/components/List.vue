@@ -27,10 +27,10 @@ defineProps({
 <style scoped>
 .list {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  gap: 20px;
-  padding: 0 40px;
+  gap: 40px;
+  padding: 0 40px 20px 40px;
 }
 </style>

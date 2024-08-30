@@ -1,11 +1,14 @@
 <script setup>
+import { inject } from 'vue'
 import CartProduct from '../components/CartProduct.vue'
+
+const { onDrawerToggle } = inject('togglers')
 </script>
 
 <template>
   <div class="container">
     <div class="title">
-      <img class="arrow" src="/public/arrow-right.svg" alt="icon back" />
+      <img @click="onDrawerToggle" class="arrow" src="/public/arrow-right.svg" alt="icon back" />
       <h2>Shopping Cart</h2>
     </div>
 

@@ -1,4 +1,6 @@
-
+<script setup>
+  const emit = defineEmits(['onDrawerToggle'])
+</script>
 
 <template >
   <header class="header">
@@ -6,7 +8,7 @@
       <img src="../assets/logo.svg" alt="logo">
     </div>
     <nav class="nav">
-      <div class="navItem">
+      <div @click="() => emit('onDrawerToggle')" class="navItem">
         <img src="/public/cart.svg" alt="cart">
         <span class="price">123 $</span>
       </div>

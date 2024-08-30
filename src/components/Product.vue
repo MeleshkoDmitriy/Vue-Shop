@@ -12,8 +12,7 @@ const props = defineProps({
   isAdded: Boolean
 })
 
-const onFavoriteToggle = inject('onFavoriteToggle')
-const onAddedToggle = inject('onAddedToggle')
+const {onFavoriteToggle, onAddedToggle} = inject('togglers')
 
 const onFavoriteClick = () => {
   onFavoriteToggle(props.id)

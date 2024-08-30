@@ -8,11 +8,18 @@ import { api } from '../api'
 
 const products = ref([])
 
+const isDrawerOpen = ref(false)
+
 const filters = reactive({
   sortBy: 'title',
   category: '',
+  sex: '',
   searchQuery: ''
 })
+
+const onDrawerToggle = () => {
+  isDrawerOpen.value = !isDrawerOpen.value
+}
 
 const onSelectChange = (event) => {
   filters.sortBy = event.target.value
@@ -20,6 +27,10 @@ const onSelectChange = (event) => {
 
 const onCategorySelectChange = (event) => {
   filters.category = event.target.value
+}
+
+const onSexSelectChange = (event) => {
+  filters.sex = event.target.value
 }
 
 const onInputSearchChange = (event) => {
@@ -34,6 +45,10 @@ const fetchProducts = async () => {
 
     if (filters.category) {
       params.category = filters.category
+    }
+
+    if (filters.sex) {
+      params.sex = filters.sex
     }
 
     if (filters.searchQuery) {
@@ -77,20 +92,33 @@ const onAddedToggle = async (productId) => {
   }
 }
 
+const onResetFiltersClick = () => {
+  // filters.sortBy = 'title'
+  // filters.category = ''
+  // filters.sex = ''
+  // filters.searchQuery = ''
+}
+
 provide('onFavoriteToggle', onFavoriteToggle)
 provide('onAddedToggle', onAddedToggle)
+provide('onDrawerToggle', onDrawerToggle)
+provide('togglers', {
+  onFavoriteToggle,
+  onAddedToggle,
+  onDrawerToggle,
+})
 onMounted(fetchProducts)
 watch(filters, fetchProducts)
 </script>
 
 <template>
-  <!-- <Drawer /> -->
+  <Drawer v-if="isDrawerOpen" />
   <div class="wrapperApp">
     <div class="container">
-      <Header />
+      <Header @on-drawer-toggle="onDrawerToggle" />
 
       <div class="panel">
-        <h2>All products</h2>
+        <h2 class="title">All products</h2>
         <div class="filters">
           <select class="inputs" @change="onSelectChange">
             <option value="title">from A to Z</option>
@@ -107,8 +135,13 @@ watch(filters, fetchProducts)
             <option value="hoodie">Hoodeis</option>
             <option value="jacket">Jackets</option>
           </select>
+          <select class="inputs" @change="onSexSelectChange">
+            <option value="">All</option>
+            <option value="w">Women</option>
+            <option value="m">Men</option>
+          </select>
           <input class="inputs" @input="onInputSearchChange" type="text" placeholder="Search..." />
-          <button class="reset" type="button">
+          <button @click="onResetFiltersClick" class="reset" type="button">
             Reset
           </button>
         </div>
@@ -139,6 +172,12 @@ watch(filters, fetchProducts)
   display: flex;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
+}
+.title {
+  color: var(--color-vue-green);
+  text-transform: uppercase;
+  font-size: 22px;
 }
 .filters {
   display: flex;
@@ -147,7 +186,7 @@ watch(filters, fetchProducts)
 .inputs,
 .reset {
   width: 150px;
-  height: 30px;
+  height: 25px;
   border: 1px solid var(--color-vue-green);
   border-radius: 3px;
   outline: none;
