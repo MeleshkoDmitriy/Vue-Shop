@@ -37,12 +37,12 @@ const onAddClick = () => {
     <div class="buttons">
       <img
         @click="onFavoriteClick"
-        :src="isFavorite ? '/public/like-2.svg' : '/public/like-1.svg'"
+        :src="isFavorite ? '../assets/like-2.svg' : '../assets/like-1.svg'"
         alt="isFavorite"
       />
       <img
         @click="onAddClick"
-        :src="isAdded ? '/public/checked.svg' : '/public/plus.svg'"
+        :src="isAdded ? '../assets/checked.svg' : '../assets/plus.svg'"
         alt="isCart"
       />
     </div>
