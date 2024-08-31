@@ -1,5 +1,5 @@
 <script setup>
-import { useProductsStore } from '@/store/store';
+import { useProductsStore } from '@/store/store'
 
 const props = defineProps({
   id: Number,
@@ -9,7 +9,7 @@ const props = defineProps({
   imgUrl: String,
   sex: String,
   isFavorite: Boolean,
-  isAdded: Boolean,
+  isAdded: Boolean
 })
 
 const productsStore = useProductsStore()
@@ -33,55 +33,60 @@ const onAddClick = () => {
     <span class="price"
       >Price: <b>{{ price }} $</b></span
     >
-    <div class="buttons">
+    <div class="fav">
       <img
         @click="onFavoriteClick"
-        :src="isFavorite ? 'https://i.ibb.co/sWm7MWT/like-2.png' : 'https://i.ibb.co/fdQtLvN/like-1.png'"
+        :src="
+          isFavorite ? 'https://i.ibb.co/sWm7MWT/like-2.png' : 'https://i.ibb.co/fdQtLvN/like-1.png'
+        "
         alt="isFavorite"
       />
-      <img
-        @click="onAddClick"
-        :src="isAdded ? 'https://i.ibb.co/4TTVD7q/checked.png' : 'https://i.ibb.co/9GyM9kd/plus.png'"
-        alt="isCart"
-      />
     </div>
+    <img class="remove" @click="onAddClick" src="/public/close.svg" alt="remove">
   </div>
 </template>
 
 <style scoped>
 .card {
+  width: 100%;
   padding: 20px;
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  transition: 0.25s;
-  cursor: pointer;
-  border-radius: 20px;
-  overflow: hidden;
   box-shadow: 0 0px 5px var(--bg-color);
+  border-radius: 20px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  position: relative;
 }
 .card:hover {
   transform: translateY(-10px);
   box-shadow: 0 5px 5px var(--color-vue-green);
 }
 .image {
-  max-width: 300px;
-  max-height: 450px;
   overflow: hidden;
-  border-radius: 5px;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
 }
 .image img {
   width: 100%;
-  height: 100%;
   object-fit: cover;
+}
+.title {
+  flex-basis: 40%;
 }
 .category {
   color: var(--color-vue-green);
+  flex-basis: 10%;
 }
-.buttons {
-  display: flex;
-  gap: 20px;
+.fav,
+.remove {
+  cursor: pointer;
+}
+.remove {
+  position: absolute;
+  top: -15px;
+  right: -15px;
 }
 </style>

@@ -7,7 +7,6 @@ const productsStore = useProductsStore()
 </script>
 
 <template>
-  <h2 class="title">Favorites</h2>
   <ProductList v-if="productsStore.favoritesLength > 0" :products="productsStore.favorites" />
   <InformationBlock
     v-else

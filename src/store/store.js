@@ -9,7 +9,9 @@ export const useProductsStore = defineStore("ProductStore", () => {
   const favoritesLength = computed(() => favorites.value.length)
   const cartProducts = ref([])
   const cartProductsLength = computed(() => cartProducts.value.length)
-  const cartProductsPrice = computed(() => cartProducts.value.reduce((acc, item) => acc + item.price, 0))
+  const cartProductsPrice = computed(() => 
+    Math.round((cartProducts.value.reduce((acc, item) => acc + item.price, 0)) * 100) / 100
+  )
 
   const fetchProducts = async (filters) => {
     try {

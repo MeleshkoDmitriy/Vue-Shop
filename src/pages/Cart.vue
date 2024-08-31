@@ -1,14 +1,14 @@
 <script setup>
 import { useProductsStore } from '@/store/store'
-import ProductList from '../components/ProductList.vue'
+import CartList from '../components/CartList.vue'
 import InformationBlock from '../components/InformationBlock.vue'
 
 const productsStore = useProductsStore()
 </script>
 
 <template>
-  <h2 class="title">cart</h2>
-  <ProductList v-if="productsStore.cartProductsLength > 0" :products="productsStore.cartProducts" />
+  <CartList v-if="productsStore.cartProductsLength > 0" :products="productsStore.cartProducts" />
+
   <InformationBlock
     v-else
     img="/public/cart.svg"
