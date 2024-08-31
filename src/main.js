@@ -4,6 +4,7 @@ import App from './App.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from './pages/Home.vue'
 import Favorites from './pages/Favorites.vue'
+import Cart from './pages/Cart.vue'
 
 const routes = [
   {
@@ -15,6 +16,11 @@ const routes = [
     path: '/favorites',
     name: 'Favorites',
     component: Favorites
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: Cart
   }
 ]
 

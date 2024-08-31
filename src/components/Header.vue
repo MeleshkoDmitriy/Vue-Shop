@@ -17,23 +17,29 @@ const productsStore = useProductsStore()
     ></router-link>
 
     <nav class="nav">
-      <div @click="() => emit('onDrawerToggle')" class="navItem">
-        <Badge
-          v-if="productsStore.cartProductsPrice > 0"
-          :counter="productsStore.cartProductsLength"
-        />
-        <img src="/public/cart.svg" alt="cart" />
-        <span
-          v-if="productsStore.cartProductsPrice > 0"
-          :class="['price', { active: isDrawerOpen }]"
-          ><strong>{{ productsStore.cartProductsPrice }} $</strong></span
-        >
-        <span v-else :class="['price', { active: isDrawerOpen }]"></span>
-      </div>
+      
+      <router-link to="/cart">
+        <div class="navItem">
+          <Badge
+            v-if="productsStore.cartProductsPrice > 0"
+            :counter="productsStore.cartProductsLength"
+          />
+          <img src="/public/cart.svg" alt="cart" />
+          <span
+            v-if="productsStore.cartProductsPrice > 0"
+            :class="['price', { active: isDrawerOpen }]"
+            ><strong>{{ productsStore.cartProductsPrice }} $</strong></span
+          >
+          <span v-else :class="['price', { active: isDrawerOpen }]"></span>
+        </div>
+      </router-link>
 
       <router-link to="/favorites">
         <div class="navItem">
-          <Badge :counter="productsStore.favoritesLength" />
+          <Badge
+            v-if:="productsStore.favoritesLength > 0"
+            :counter="productsStore.favoritesLength"
+          />
           <img src="/public/heart.svg" alt="heart" />
           <span class="heart" active-class="active">Favorite</span>
         </div></router-link

@@ -1,8 +1,7 @@
 <script setup>
 import Header from '../src/components/Header.vue'
-import Drawer from '../src/components/Drawer.vue'
 
-import { ref, reactive, watch, provide } from 'vue'
+import { ref, watch, provide, onMounted, reactive } from 'vue'
 import { useProductsStore } from './store/store'
 
 
@@ -12,6 +11,7 @@ const onDrawerToggle = () => {
   isDrawerOpen.value = !isDrawerOpen.value
 }
 
+const productsStore = useProductsStore()
 
 provide('togglers', {
   onDrawerToggle
@@ -51,5 +51,4 @@ provide('drawer', isDrawerOpen)
 }
 .main {
 }
-
 </style>

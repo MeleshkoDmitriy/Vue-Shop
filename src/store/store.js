@@ -90,6 +90,6 @@ export const useProductsStore = defineStore("ProductStore", () => {
     favoritesLength,
     cartProducts,
     cartProductsLength,
-    cartProductsPrice
+    cartProductsPrice,
   }
 })

@@ -1,15 +1,16 @@
 <script setup>
 import { useProductsStore } from '@/store/store'
-import { onMounted, provide, reactive, watch } from 'vue'
 import ProductList from '../components/ProductList.vue'
+import { onMounted, reactive, watch } from 'vue';
+import { provide } from 'vue';
 
 const productsStore = useProductsStore()
 
 const filters = reactive({
-  sortBy: 'title',
-  category: '',
-  sex: '',
-  searchQuery: ''
+    sortBy: 'title',
+    category: '',
+    sex: '',
+    searchQuery: ''
 })
 
 const fetchProducts = () => {
@@ -46,11 +47,13 @@ provide('fn', {
   onSexSelectChange,
   onSelectChange
 })
+
 onMounted(fetchProducts)
 watch(filters, fetchProducts)
 </script>
 
 <template>
+
   <div class="panel">
     <h2 class="title">All products</h2>
     <div class="filters">
@@ -80,6 +83,7 @@ watch(filters, fetchProducts)
   </div>
 
   <ProductList :products="productsStore.products" />
+
 </template>
 
 <style scoped>
