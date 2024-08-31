@@ -16,8 +16,17 @@ const productsStore = useProductsStore()
         <img src="../assets/logo.svg" alt="logo" /></div
     ></router-link>
 
+    
+
     <nav class="nav">
-      
+
+      <router-link to="/">
+        <div class="navItem">
+          <img src="/public/profile.svg" alt="profile" />
+          <span class="profile">Catalog</span>
+        </div>
+      </router-link>
+
       <router-link to="/cart">
         <div class="navItem">
           <Badge
@@ -44,11 +53,6 @@ const productsStore = useProductsStore()
           <span class="heart" active-class="active">Favorite</span>
         </div></router-link
       >
-
-      <div class="navItem">
-        <img src="/public/profile.svg" alt="profile" />
-        <span class="profile">Profile</span>
-      </div>
     </nav>
   </header>
 </template>
@@ -85,8 +89,5 @@ const productsStore = useProductsStore()
   margin-left: 5px;
   position: relative;
   top: -4px;
-}
-.active {
-  color: var(--color-vue-green);
 }
 </style>

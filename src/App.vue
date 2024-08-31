@@ -1,8 +1,7 @@
 <script setup>
 import Header from '../src/components/Header.vue'
 
-import { ref, watch, provide, onMounted, reactive } from 'vue'
-import { useProductsStore } from './store/store'
+import { ref, provide } from 'vue'
 
 
 const isDrawerOpen = ref(false)
@@ -10,8 +9,6 @@ const isDrawerOpen = ref(false)
 const onDrawerToggle = () => {
   isDrawerOpen.value = !isDrawerOpen.value
 }
-
-const productsStore = useProductsStore()
 
 provide('togglers', {
   onDrawerToggle

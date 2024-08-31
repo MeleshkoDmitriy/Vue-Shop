@@ -1,12 +1,7 @@
 :root {
-  --bg-color: #E1E3E6;
+  --bg-color: #e1e3e6;
   --color-vue-green: #42b883;
-  --color-vue-blue: #35495e
-
-  --scrollbar-width: 17px;
-}
-
-html {
+  --color-vue-blue: #35495e --scrollbar-width: 17px;
 }
 body {
   height: 100%;
@@ -18,7 +13,7 @@ body {
   font-family: sans-serif;
   color: var(--color-vue-blue);
   transition: 0.25s;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   scroll-behavior: smooth;
 }
 a {
@@ -27,7 +22,8 @@ a {
 a:visited {
   color: initial;
 }
-.active-router-link{
+.active-router-link {
   text-decoration: underline;
   text-decoration-color: var(--color-vue-green);
+  color: var(--color-vue-green);
 }
