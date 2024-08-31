@@ -1,13 +1,16 @@
 <script setup>
 import { useProductsStore } from '@/store/store'
 import ProductList from '../components/ProductList.vue'
-import InformationBlock from '@/components/InformationBlock.vue';
+import InformationBlock from '@/components/InformationBlock.vue'
 
 const productsStore = useProductsStore()
 </script>
 
 <template>
-  <ProductList v-if="productsStore.favoritesLength > 0" :products="productsStore.favorites" />
+  <ProductList
+    v-if="productsStore.favoritesLength > 0"
+    :products="productsStore.products.filter((pr) => pr.isFavorite === true)"
+  />
   <InformationBlock
     v-else
     img="/public/heart.svg"

@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <section class="list">
+  <section class="list" v-auto-animate>
     <Product 
       v-for="product in products"
       v-bind:key="product.id"

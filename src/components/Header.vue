@@ -21,6 +21,14 @@ const fetchProducts = () => {
   productsStore.fetchProducts(filters)
 }
 
+const fetchFavorites = () => {
+  productsStore.fetchFavorites()
+}
+
+const fetchCart = () => {
+  productsStore.fetchCart()
+}
+
 const onSelectChange = (event) => {
   filters.sortBy = event.target.value
 }
@@ -53,6 +61,8 @@ provide('fn', {
 })
 
 onMounted(fetchProducts)
+onMounted(fetchFavorites)
+onMounted(fetchCart)
 watch(filters, fetchProducts)
 </script>
 

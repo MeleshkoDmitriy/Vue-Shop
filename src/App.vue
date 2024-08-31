@@ -1,8 +1,6 @@
 <script setup>
 import Header from '../src/components/Header.vue'
-
 import { ref, provide } from 'vue'
-
 
 const isDrawerOpen = ref(false)
 
@@ -45,7 +43,5 @@ provide('drawer', isDrawerOpen)
   padding-right: var(--scrollbar-width);
   background-color: #fff;
   border-radius: 20px;
-}
-.main {
 }
 </style>

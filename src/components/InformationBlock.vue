@@ -19,7 +19,7 @@ defineProps({
 <style scoped>
 .wrapper {
   width: 100%;
-  height: 50vh;
+  min-height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;

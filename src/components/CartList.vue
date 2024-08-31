@@ -10,7 +10,7 @@ const productsStore = useProductsStore()
 
 <template>
   <section class="wrapper">
-    <div class="list">
+    <div class="list" v-auto-animate>
       <CartProduct
         v-for="product in productsStore.cartProducts"
         v-bind:key="product.id"

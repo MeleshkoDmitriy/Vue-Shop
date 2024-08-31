@@ -7,7 +7,10 @@ const productsStore = useProductsStore()
 </script>
 
 <template>
-  <CartList v-if="productsStore.cartProductsLength > 0" :products="productsStore.cartProducts" />
+  <CartList
+    v-if="productsStore.cartProductsLength > 0"
+    :products="productsStore.products.filter((pr) => pr.isAdded === true)"
+  />
 
   <InformationBlock
     v-else
