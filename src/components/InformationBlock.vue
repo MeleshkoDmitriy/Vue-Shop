@@ -32,7 +32,7 @@ defineProps({
   align-items: center;
 }
 img {
-  width: 150px;
+  width: 30px;
 }
 h2,
 p {
