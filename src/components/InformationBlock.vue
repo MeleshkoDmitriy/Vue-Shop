@@ -9,7 +9,7 @@ defineProps({
 <template>
   <section class="wrapper">
     <div class="body">
-      <img :src="img" alt="info image" />
+      <!-- <img :src="img" alt="info image" /> -->
       <h2>{{ title }}</h2>
       <p>{{ text }}</p>
     </div>
@@ -32,7 +32,7 @@ defineProps({
   align-items: center;
 }
 img {
-  width: 30px;
+  width: 20px;
 }
 h2,
 p {
