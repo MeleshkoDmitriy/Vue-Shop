@@ -13,7 +13,7 @@ const productsStore = useProductsStore()
   />
   <InformationBlock
     v-else
-    img="/public/heart.svg"
+    img="https://i.ibb.co/5BwDRGq/heart.png"
     title="No favorite products!"
     text="Add any clothing you like to the favorites and make your order"
   />

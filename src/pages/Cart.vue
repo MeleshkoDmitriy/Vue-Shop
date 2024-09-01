@@ -14,7 +14,7 @@ const productsStore = useProductsStore()
 
   <InformationBlock
     v-else
-    img="/public/cart.svg"
+    img="https://i.ibb.co/NmMtNn9/cart.png"
     title="Cart is empty!"
     text="Add any clothing you like to the cart and make your order"
   />
