@@ -115,7 +115,7 @@ watch(filters, fetchProducts)
   </header>
 
   <div class="panel">
-    <h2 v-if="route.path === '/'" class="title">All products</h2>
+    <h2 v-if="route.path === '/'" class="title">Products</h2>
     <h2 v-else-if="route.path === '/cart'" class="title">Cart</h2>
     <h2 v-else-if="route.path === '/favorites'" class="title">Favorites</h2>
     <h2 v-else-if="isProductPage(route.path)" class="title">Product</h2>

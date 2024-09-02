@@ -60,19 +60,19 @@ export const useProductsStore = defineStore('ProductStore', () => {
   }
 
   const onFavoriteToggle = async (productId, isFav) => {
+    const toggledProduct = products.value.find((product) => product.id === productId)
+
+    if (isFav === true) {
+      favorites.value = favorites.value.filter((fav) => fav.id !== productId)
+    } else if (isFav === false) {
+      favorites.value.push(toggledProduct)
+    } else {
+      console.error(isFav)
+    }
+
+    toggledProduct.isFavorite = !toggledProduct.isFavorite
+
     try {
-      const toggledProduct = products.value.find((product) => product.id === productId)
-
-      if (isFav === true) {
-        favorites.value = favorites.value.filter((fav) => fav.id !== productId)
-      } else if (isFav === false) {
-        favorites.value.push(toggledProduct)
-      } else {
-        console.error(isFav)
-      }
-
-      toggledProduct.isFavorite = !toggledProduct.isFavorite
-
       await axios.patch(`${api}/products/${productId}`, {
         isFavorite: toggledProduct.isFavorite
       })
@@ -82,19 +82,19 @@ export const useProductsStore = defineStore('ProductStore', () => {
   }
 
   const onAddedToggle = async (productId, isAdd) => {
+    const toggledProduct = products.value.find((product) => product.id === productId)
+
+    if (isAdd === true) {
+      cartProducts.value = cartProducts.value.filter((product) => product.id !== productId)
+    } else if (isAdd === false) {
+      cartProducts.value.push(toggledProduct)
+    } else {
+      console.error(isAdd)
+    }
+
+    toggledProduct.isAdded = !toggledProduct.isAdded
+
     try {
-      const toggledProduct = products.value.find((product) => product.id === productId)
-
-      if (isAdd === true) {
-        cartProducts.value = cartProducts.value.filter((product) => product.id !== productId)
-      } else if (isAdd === false) {
-        cartProducts.value.push(toggledProduct)
-      } else {
-        console.error(isAdd)
-      }
-
-      toggledProduct.isAdded = !toggledProduct.isAdded
-
       await axios.patch(`${api}/products/${productId}`, {
         isAdded: toggledProduct.isAdded
       })

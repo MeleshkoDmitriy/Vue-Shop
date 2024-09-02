@@ -1,35 +1,51 @@
-# vue-shop
+# Vue-Shop
 
-This template should help get you started developing with Vue 3 in Vite.
+Welcome to **Vue-Shop**, a modern and intuitive online clothing store application built with Vue.js. This app allows users to browse and shop for a variety of clothing options effortlessly.
 
-## Recommended IDE Setup
+## Technology Stack
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- **JavaScript** (ES6+)
+- **Vue.js** (with the Composition API)
+- **Pinia** (state management)
+- **Vue Router** (for navigation)
+- **CSS** (for styling)
+- **Axios** (for API requests)
+- **REST API** (for data handling)
 
-## Customize configuration
+## Features
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Vue-Shop is designed to enhance your shopping experience with the following features:
 
-## Project Setup
+- **Product Categories**: Explore a wide range of clothing items categorized into:
+  - Tees
+  - Jeans
+  - Caps
+  - Sneakers
+  - Hoodies
+  - Jackets
 
-```sh
-npm install
-```
+- **Product Details**: Each product includes essential information:
+  - Name
+  - Category
+  - Gender (Men, Women)
+  - Price
 
-### Compile and Hot-Reload for Development
+- **Multiple Pages**: The application consists of several key pages:
+  - **Home**: View all available products.
+  - **Cart**: Manage items you've added to your shopping cart.
+  - **Favorites**: Keep track of your favorite items for easy access.
+  - **Product Detail**: Get detailed information about a specific product.
 
-```sh
-npm run dev
-```
+- **Shopping Capabilities**:
+  - Add products to your cart for checkout.
+  - Save products to your favorites list for later consideration.
 
-### Compile and Minify for Production
+- **Sorting and Filtering Options**:
+  - Alphabetically by name (A - Z, Z - A)
+  - By price (Lowest to Highest, Highest to Lowest)
+  - Filter by gender and product categories.
+  - Search for items by their name.
 
-```sh
-npm run build
-```
+- **Persistent Storage**: All cart and favorites data is saved via a REST API, ensuring that your selections remain intact even after refreshing the page.
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Enjoy shopping with Vue-Shop! Happy browsing!

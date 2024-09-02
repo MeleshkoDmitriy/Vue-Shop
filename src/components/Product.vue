@@ -47,7 +47,9 @@ const onAddClick = () => {
         <img
           @click.prevent="onAddClick"
           :src="
-            isAdded ? 'https://i.ibb.co/4TTVD7q/checked.png' : 'https://i.ibb.co/9GyM9kd/plus.png'
+            isAdded 
+            ? 'https://i.ibb.co/4TTVD7q/checked.png' 
+            : 'https://i.ibb.co/9GyM9kd/plus.png'
           "
           alt="isCart"
         />
