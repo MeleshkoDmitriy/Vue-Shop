@@ -2,16 +2,19 @@
 defineProps({
   img: String,
   title: String,
-  text: String
+  text: String,
+  slot: {
+    default: () => null,
+  },
 })
 </script>
 
 <template>
   <section class="wrapper">
     <div class="body">
-      <!-- <img :src="img" alt="info image" /> -->
       <h2>{{ title }}</h2>
       <p>{{ text }}</p>
+      <slot>{{ slot }}</slot>
     </div>
   </section>
 </template>

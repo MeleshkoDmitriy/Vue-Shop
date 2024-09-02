@@ -132,7 +132,7 @@ watch(filters, fetchProducts)
         <option value="jacket">Jackets</option>
       </select>
       <select class="inputs" @change="onSexSelectChange">
-        <option value="">All</option>
+        <option value="">Everyone</option>
         <option value="w">Women</option>
         <option value="m">Men</option>
       </select>

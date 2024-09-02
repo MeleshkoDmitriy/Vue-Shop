@@ -1,18 +1,16 @@
 <script setup>
-import { useProductsStore } from '@/store/store'
 import CartProduct from './CartProduct.vue'
 import CartDashboard from './CartDashboard.vue'
 defineProps({
   products: Array
 })
-const productsStore = useProductsStore()
 </script>
 
 <template>
   <section class="wrapper">
     <div class="list" v-auto-animate>
       <CartProduct
-        v-for="product in productsStore.cartProducts"
+        v-for="product in products"
         v-bind:key="product.id"
         :id="product.id"
         :title="product.title"

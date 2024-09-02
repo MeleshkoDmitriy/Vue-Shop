@@ -22,6 +22,11 @@ const routes = [
     path: '/cart',
     name: 'cart',
     component: Cart
+  },
+  {
+    path: '/:notFound(.*)',
+    name: 'NotFound',
+    component: () => import('./pages/NotFound.vue')
   }
 ]
 

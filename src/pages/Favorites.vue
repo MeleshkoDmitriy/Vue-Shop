@@ -9,7 +9,7 @@ const productsStore = useProductsStore()
 <template>
   <ProductList
     v-if="productsStore.favoritesLength > 0"
-    :products="productsStore.products.filter((pr) => pr.isFavorite === true)"
+    :products="productsStore.favorites"
   />
   <InformationBlock
     v-else

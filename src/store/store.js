@@ -63,13 +63,15 @@ export const useProductsStore = defineStore('ProductStore', () => {
     try {
       const toggledProduct = products.value.find((product) => product.id === productId)
 
-      toggledProduct.isFavorite = !toggledProduct.isFavorite
-
-      if (isFav) {
+      if (isFav === true) {
         favorites.value = favorites.value.filter((fav) => fav.id !== productId)
-      } else {
+      } else if (isFav === false) {
         favorites.value.push(toggledProduct)
+      } else {
+        console.error(isFav)
       }
+
+      toggledProduct.isFavorite = !toggledProduct.isFavorite
 
       await axios.patch(`${api}/products/${productId}`, {
         isFavorite: toggledProduct.isFavorite
@@ -83,13 +85,15 @@ export const useProductsStore = defineStore('ProductStore', () => {
     try {
       const toggledProduct = products.value.find((product) => product.id === productId)
 
-      toggledProduct.isAdded = !toggledProduct.isAdded
-
-      if (isAdd) {
+      if (isAdd === true) {
         cartProducts.value = cartProducts.value.filter((product) => product.id !== productId)
-      } else {
+      } else if (isAdd === false) {
         cartProducts.value.push(toggledProduct)
+      } else {
+        console.error(isAdd)
       }
+
+      toggledProduct.isAdded = !toggledProduct.isAdded
 
       await axios.patch(`${api}/products/${productId}`, {
         isAdded: toggledProduct.isAdded

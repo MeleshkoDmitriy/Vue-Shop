@@ -4,7 +4,6 @@ import Product from "./Product.vue"
 defineProps({
   products: Array
 })
-
 </script>
 
 <template>
