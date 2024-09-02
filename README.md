@@ -35,6 +35,7 @@ Vue-Shop is designed to enhance your shopping experience with the following feat
   - **Cart**: Manage items you've added to your shopping cart.
   - **Favorites**: Keep track of your favorite items for easy access.
   - **Product Detail**: Get detailed information about a specific product.
+  - **404**: In case if page wasn't found.
 
 - **Shopping Capabilities**:
   - Add products to your cart for checkout.
