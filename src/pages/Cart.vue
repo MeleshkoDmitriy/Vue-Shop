@@ -9,7 +9,7 @@ const productsStore = useProductsStore()
 <template>
   <CartList
     v-if="productsStore.cartProductsLength > 0"
-    :products="productsStore.cartProducts"
+    :products="productsStore.products.filter(pr => pr.isAdded === true)"
   />
 
   <InformationBlock
