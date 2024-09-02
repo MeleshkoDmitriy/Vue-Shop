@@ -2,6 +2,7 @@
 import { useProductsStore } from '@/store/store'
 import ProductList from '../components/ProductList.vue'
 import InformationBlock from '@/components/InformationBlock.vue'
+import { computed } from 'vue'
 
 const productsStore = useProductsStore()
 </script>

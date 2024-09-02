@@ -1,11 +1,16 @@
 <script setup>
 import { useProductsStore } from '@/store/store'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { inject, onMounted, provide, reactive, watch } from 'vue';
 import Badge from './Badge.vue'
 
 const productsStore = useProductsStore()
 const route = useRoute()
+const router = useRouter()
+
+const goBack = () => {
+  router.back()
+}
 
 const isProductPage = (path) => {
   return path.startsWith('/product/');
@@ -116,9 +121,15 @@ watch(filters, fetchProducts)
 
   <div class="panel">
     <h2 v-if="route.path === '/'" class="title">Products</h2>
-    <h2 v-else-if="route.path === '/cart'" class="title">Cart</h2>
-    <h2 v-else-if="route.path === '/favorites'" class="title">Favorites</h2>
-    <h2 v-else-if="isProductPage(route.path)" class="title">Product</h2>
+    <h2 v-else-if="route.path === '/cart'" class="title">
+      <img src="/public/arrow-right.svg" @click="goBack" alt="" />Cart
+    </h2>
+    <h2 v-else-if="route.path === '/favorites'" class="title">
+      <img src="/public/arrow-right.svg" @click="goBack" alt="" />Favorites
+    </h2>
+    <h2 v-else-if="isProductPage(route.path)" class="title">
+      <img src="/public/arrow-right.svg" @click="goBack" alt="" />Product
+    </h2>
 
     <div v-if="route.path === '/'" class="filters">
       <select class="inputs" @change="onSelectChange">
@@ -192,6 +203,14 @@ watch(filters, fetchProducts)
   color: var(--color-vue-green);
   text-transform: uppercase;
   font-size: 22px;
+}
+.title img {
+  position: relative;
+  top: 2px;
+  transform: rotate(180deg);
+  height: 20px;
+  margin-right: 20px;
+  cursor: pointer;
 }
 .filters {
   display: flex;
