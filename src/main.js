@@ -27,6 +27,11 @@ const routes = [
     path: '/:notFound(.*)',
     name: 'NotFound',
     component: () => import('./pages/NotFound.vue')
+  },
+  {
+    path: '/product/:id',
+    name: 'product-item',
+    component: () => import('./pages/Product.vue')
   }
 ]
 

@@ -1,5 +1,5 @@
 <script setup>
-import { useProductsStore } from '@/store/store';
+import { useProductsStore } from '@/store/store'
 
 const props = defineProps({
   id: Number,
@@ -9,7 +9,7 @@ const props = defineProps({
   imgUrl: String,
   sex: String,
   isFavorite: Boolean,
-  isAdded: Boolean,
+  isAdded: Boolean
 })
 
 const productsStore = useProductsStore()
@@ -24,28 +24,36 @@ const onAddClick = () => {
 </script>
 
 <template>
-  <div class="card">
-    <div class="image">
-      <img :src="imgUrl" alt="product" />
+  <router-link :to="`/product/${id}`">
+    <div class="card">
+      <div class="image">
+        <img :src="imgUrl" alt="product" />
+      </div>
+      <h3 class="title">{{ title }}</h3>
+      <span class="category">{{ category }}</span>
+      <span class="price"
+        >Price: <b>{{ price }} $</b></span
+      >
+      <div class="buttons">
+        <img
+          @click.prevent="onFavoriteClick"
+          :src="
+            isFavorite
+              ? 'https://i.ibb.co/sWm7MWT/like-2.png'
+              : 'https://i.ibb.co/fdQtLvN/like-1.png'
+          "
+          alt="isFavorite"
+        />
+        <img
+          @click.prevent="onAddClick"
+          :src="
+            isAdded ? 'https://i.ibb.co/4TTVD7q/checked.png' : 'https://i.ibb.co/9GyM9kd/plus.png'
+          "
+          alt="isCart"
+        />
+      </div>
     </div>
-    <h3 class="title">{{ title }}</h3>
-    <span class="category">{{ category }}</span>
-    <span class="price"
-      >Price: <b>{{ price }} $</b></span
-    >
-    <div class="buttons">
-      <img
-        @click="onFavoriteClick"
-        :src="isFavorite ? 'https://i.ibb.co/sWm7MWT/like-2.png' : 'https://i.ibb.co/fdQtLvN/like-1.png'"
-        alt="isFavorite"
-      />
-      <img
-        @click="onAddClick"
-        :src="isAdded ? 'https://i.ibb.co/4TTVD7q/checked.png' : 'https://i.ibb.co/9GyM9kd/plus.png'"
-        alt="isCart"
-      />
-    </div>
-  </div>
+  </router-link>
 </template>
 
 <style scoped>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import InformationBlock from '@/components/InformationBlock.vue'
+import InformationBlock from '@/components/InformationBlock.vue';
 import Button from '../components/Button.vue'
 import { useRouter } from 'vue-router'
 

@@ -21,10 +21,4 @@ const productsStore = useProductsStore()
 </template>
 
 <style scoped>
-.title {
-  color: var(--color-vue-green);
-  text-transform: uppercase;
-  font-size: 22px;
-  padding: 20px 40px;
-}
 </style>

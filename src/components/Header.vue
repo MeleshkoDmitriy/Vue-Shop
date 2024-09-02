@@ -7,6 +7,10 @@ import Badge from './Badge.vue'
 const productsStore = useProductsStore()
 const route = useRoute()
 
+const isProductPage = (path) => {
+  return path.startsWith('/product/');
+}
+
 const emit = defineEmits(['onDrawerToggle'])
 const isDrawerOpen = inject('drawer')
 
@@ -114,6 +118,7 @@ watch(filters, fetchProducts)
     <h2 v-if="route.path === '/'" class="title">All products</h2>
     <h2 v-else-if="route.path === '/cart'" class="title">Cart</h2>
     <h2 v-else-if="route.path === '/favorites'" class="title">Favorites</h2>
+    <h2 v-else-if="isProductPage(route.path)" class="title">Product</h2>
 
     <div v-if="route.path === '/'" class="filters">
       <select class="inputs" @change="onSelectChange">
@@ -137,7 +142,7 @@ watch(filters, fetchProducts)
         <option value="m">Men</option>
       </select>
       <input class="inputs" @input="onInputSearchChange" type="text" placeholder="Search..." />
-      <button @click="onResetFiltersClick" class="reset" type="button">Reset</button>
+      <button disabled @click="onResetFiltersClick" class="reset" type="button"></button>
     </div>
   </div>
 </template>

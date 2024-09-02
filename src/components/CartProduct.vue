@@ -24,26 +24,30 @@ const onAddClick = () => {
 </script>
 
 <template>
-  <div class="card">
-    <div class="image">
-      <img :src="imgUrl" alt="product" />
+  <router-link :to="`/product/${id}`">
+    <div class="card">
+      <div class="image">
+        <img :src="imgUrl" alt="product" />
+      </div>
+      <h3 class="title">{{ title }}</h3>
+      <span class="category">{{ category }}</span>
+      <span class="price"
+        >Price: <b>{{ price }} $</b></span
+      >
+      <div class="fav">
+        <img
+          @click.prevent="onFavoriteClick"
+          :src="
+            isFavorite
+              ? 'https://i.ibb.co/sWm7MWT/like-2.png'
+              : 'https://i.ibb.co/fdQtLvN/like-1.png'
+          "
+          alt="isFavorite"
+        />
+      </div>
+      <img class="remove" @click.prevent="onAddClick" src="/public/close.svg" alt="remove" />
     </div>
-    <h3 class="title">{{ title }}</h3>
-    <span class="category">{{ category }}</span>
-    <span class="price"
-      >Price: <b>{{ price }} $</b></span
-    >
-    <div class="fav">
-      <img
-        @click="onFavoriteClick"
-        :src="
-          isFavorite ? 'https://i.ibb.co/sWm7MWT/like-2.png' : 'https://i.ibb.co/fdQtLvN/like-1.png'
-        "
-        alt="isFavorite"
-      />
-    </div>
-    <img class="remove" @click="onAddClick" src="/public/close.svg" alt="remove">
-  </div>
+  </router-link>
 </template>
 
 <style scoped>
